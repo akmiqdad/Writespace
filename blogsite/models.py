@@ -9,7 +9,7 @@ class BlogAuthor(models.Model):
     bio = models.TextField(max_length=400)
 
     def __str__(self):
-        return self.name
+        return self.name.username
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=200)
@@ -27,9 +27,9 @@ class BlogComment(models.Model):
     comment_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        comment_len=50
+        comment_len=75
         if len(self.comment)>comment_len:
-            title=self.comment[:len_title] + '....'
+            title=self.comment[:comment_len] + '....'
         else:
             title=self.comment
         return title
