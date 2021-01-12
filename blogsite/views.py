@@ -5,6 +5,7 @@ from .models import BlogAuthor,BlogPost,BlogComment
 
 from django.core.paginator import Paginator,EmptyPage
 from django.contrib.auth import authenticate, login
+from .forms import CreateBlog,CreateComment,CreateProfile
 # Create your views here.
 
 def blog(request):
