@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    {% block title %}<title>Home - Writespace</title>{% endblock %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Grand+Hotel">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{%static 'main.css'%}">
+    <link rel="icon" href="{% static 'favicon.png' %}" type="image/png">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md sticky-top navbar-fixed-top navigation-clean-button"
+        style="background: rgb(255,255,255);color: var(--dark);margin-top: 8px;margin-left: 0px;padding-top: 13px;padding-bottom: 13px;height: 90px;border-bottom-width: 2px;border-bottom-style: solid;">
+        <div class="container">
+            <div><a class="navbar-brand" href="#"><span class="text-nowrap text-center"
+                        style="font-family: 'Grand Hotel', cursive;font-size: 35px;margin-left: -8px;text-shadow: 0px 2px 2px #aaaaaa;">writerspace</span>
+                </a></div><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"
+                style="color: var(--dark);"><span class="sr-only">Toggle navigation</span><span
+                    class="navbar-toggler-icon" style="color: var(--dark);"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <!-- <ul class="nav navbar-nav nav-right">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">home </a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">about </a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">faq </a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">contact </a></li>
+                </ul> -->
+                <p class="ml-auto navbar-text actions" style="text-shadow: 0px 0px;"><a 
+                        class="login" href="login.html"
+                        style="color: var(--dark);text-align: center;border-style: none;margin-right: 12px;">Log In</a>
+                    <a class="btn btn-light shadow action-button" role="button" 
+                        href="signup.html"
+                        style="color: var(--dark);border-radius: 0;background: rgb(255,255,255);border-style: solid;border-color: #1f2021;padding: 3px;padding-top: 1px;padding-bottom: 1px;padding-right: 4px;padding-left: 5px;">Sign
+                        Up</a></p>
+            </div>
+        </div>
+    </nav>
+    <div class="article-clean">
+        
+
+
+                {%block content%}
+
+                {%endblock%}
+
+
+    </div>
+    <footer class="footer position-absolute"
+        style="filter: blur(0px);text-align: center;border-top: 2px solid var(--dark);margin-top: 9px;padding-bottom: 35px;bottom:0;width: 100%;">
+        <footer>
+            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i
+                        class="icon ion-social-github"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a
+                    href="#"><i class="icon ion-social-facebook"></i></a></div>
+            <p class="copyright">Writerspace © 2021</p>
+        </footer>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js"></script>
+    <script src="{%static 'main.js'%}"></script>
+</body>
+
+</html>
