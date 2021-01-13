@@ -5,23 +5,16 @@ from .models import BlogAuthor,BlogPost,BlogComment
 
 from django.core.paginator import Paginator,EmptyPage
 from django.contrib.auth import authenticate, login
-from .forms import CreateBlog,CreateComment,CreateProfile
+from .forms import CreateBlog,CommentForm,CreateProfile
+from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
 def blog(request):
     Blogs = BlogPost.objects.all()
     count = BlogPost.objects.all().count()
-    p = Paginator(Blogs, 5)
 
-    page_no = request.GET.get('page', 1)
-
-    try:
-        page = p.page(page_no)
-    except EmptyPage:
-        page = p.page(1)
-    
     context = {}
-    context['Blogs'] = page
+    context['Blog'] = blog
     context['Count'] = count
     return render(request,'home.html',context)
 
@@ -39,14 +32,9 @@ def BlogDetails(request,blog_id):
 
 def AuthorDetails(request, author_id):
     Author = User.objects.get(id=author_id)
-    try:
-        Bio = Bio.objects.get(user = Author)
-        default_bio = None
-    except Bio.DoesNotExist:
-        Bio = None
-        default_bio = None
+    bio = BlogAuthor.objects.get(name = Author)
         
-    Blogs = BlogPost.objects.filter(blog_author = Author)
+    Blogs = BlogPost.objects.filter(author = Author)
     context = {}
     context['Author'] = Author
     context['Bio'] = Bio
@@ -74,3 +62,34 @@ def Bloggers(request):
     context = {}
     context['Bloggers'] = Bloggers
     return render(request, "bloggers.html", context)
+
+def Signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            new_user = authenticate(username=form.cleaned_data['username'],
+                                    password=form.cleaned_data['password1'],
+                                    )
+            login(request, new_user)
+            return redirect('author_details')
+    else:
+        form = UserCreationForm()
+    
+    context = {}
+    context['form'] = form
+    return render(request, 'signup.html', context)
+
+
+def CreateBlog(request):
+
+    if request.method == 'POST':
+        form = CreateBlog(request.user.name,request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('blog')
+    else:
+        form = CreateBlog(request.user.name)
+    context = {}
+    context['form'] = form
+    return render(request,'home.html', context)

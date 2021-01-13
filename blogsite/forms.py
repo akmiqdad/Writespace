@@ -24,7 +24,7 @@ class CreateBlog(forms.ModelForm):
         super(CreateBlog, self).__init__(*args, **kwargs)
         self.fields['author'].queryset = User.objects.filter(username=user)
 
-class CreateComment(forms.ModelForm):
+class CommentForm(forms.ModelForm):
     class Meta:
         model = BlogComment
         fields = ('blog' , 'comment')

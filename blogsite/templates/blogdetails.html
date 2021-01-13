@@ -1,1 +1,45 @@
 {% extends "base.html" %}
+{% block title %}<title>Blog - Writespace</title>{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid card">
+  <div class="card text-center mt-5 shadow-lg p-3 mb-4 bg-white rounded border border-primary">
+    <div class="card-header">By, {{Blog.author}}</div>
+    <div class="card-body">
+      <h5 class="card-title">{{Blog.title}}</h5>
+      <p class="card-text">{{Blog.content}}</p>
+    </div>
+    <div class="card-footer text-muted">{{Blog.date}}</div>
+  </div>
+ 
+
+  <div class="d-flex justify-content-center "> 
+    {%  if User == Blog.author %}
+     <a href="/blog/delete/{{Blog.id}}"><button type="button" class="btn  btn-danger ">Delete This Blog</button></a>
+    {% endif %}
+  </div>
+
+
+  <div class="card mt-3 shadow-lg p-3 mb-5 bg-white rounded border border-primary">
+    <div class="card-header"><h5>Comments</h5></div>
+    <div class="card-body">
+      <ol>
+        {% for comment in Comments %}
+        <li>
+          <p class="mt-1">{{comment}}</p>
+        </li>
+        {% endfor %}
+      </ol>
+
+      <a href="/blog/{{Blog.id}}/create"
+        ><button type="button" class="btn btn-primary btn-sm">
+          Post a comment
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

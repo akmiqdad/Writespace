@@ -70,13 +70,13 @@
     max-width: 100%
 }
 
-.footer {
+.footer-basic {
     padding: 40px 0;
     background-color: #fff;
     color: #4b4c4d
 }
 
-.footer ul {
+.footer-basic ul {
     padding: 0;
     list-style: none;
     text-align: center;
@@ -85,26 +85,26 @@
     margin-bottom: 0
 }
 
-.footer li {
+.footer-basic li {
     padding: 0 10px
 }
 
-.footer ul a {
+.footer-basic ul a {
     color: inherit;
     text-decoration: none;
     opacity: .8
 }
 
-.footer ul a:hover {
+.footer-basic ul a:hover {
     opacity: 1
 }
 
-.footer .social {
+.footer-basic .social {
     text-align: center;
     padding-bottom: 25px
 }
 
-.footer .social>a {
+.footer-basic .social>a {
     font-size: 24px;
     width: 40px;
     height: 40px;
@@ -118,16 +118,107 @@
     opacity: .75
 }
 
-.footer .social>a:hover {
+.footer-basic .social>a:hover {
     opacity: .9
 }
 
-.footer .copyright {
+.footer-basic .copyright {
     margin-top: 15px;
     text-align: center;
     font-size: 13px;
     color: #aaa;
     margin-bottom: 0
+}
+
+.login-card {
+    max-width: 350px;
+    padding: 40px;
+    background-color: #f7f7f7;
+    margin: 50px auto 25px;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .3)
+}
+
+.login-card .profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    border-radius: 50%
+}
+
+.login-card .profile-name-card {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    margin: 10px 0 0;
+    min-height: 1em
+}
+
+.login-card .reauth-email {
+    display: block;
+    color: #404040;
+    line-height: 2;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box
+}
+
+.login-card .form-signin button,
+.login-card .form-signin input[type=email],
+.login-card .form-signin input[type=password],
+.login-card .form-signin input[type=text] {
+    height: 44px;
+    font-size: 16px;
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    box-sizing: border-box
+}
+
+.login-card label {
+    color: #000
+}
+
+.login-card .form-signin .form-control:focus {
+    border-color: #6891a2;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #6891a2;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #6891a2
+}
+
+.login-card .btn.btn-signin {
+    font-weight: 700;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    background: #6891a2;
+    border-radius: 3px;
+    border: none;
+    transition: 218ms;
+    padding: 0
+}
+
+.login-card .btn.btn-signin:active,
+.login-card .btn.btn-signin:focus,
+.login-card .btn.btn-signin:hover {
+    background: #0c6121
+}
+
+.login-card .forgot-password {
+    color: #6891a2
+}
+
+.login-card .forgot-password:active,
+.login-card .forgot-password:focus,
+.login-card .forgot-password:hover {
+    color: #0c6121
 }
 
 @media (min-width:768px) {

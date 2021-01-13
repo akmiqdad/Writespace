@@ -1,1 +1,37 @@
 {% extends "base.html" %}
+{% block title %}<title>Login - Writespace</title>{% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+
+
+{%block content%}
+{% if not user.is_authenticated%}
+    <div class="login-card" style="border: 1px solid var(--dark) ;"><img class="profile-img-card" src="{% static 'avatar.png' %}" style="border-width: 1px;border-style: none;">
+        <p class="profile-name-card"> </p>
+        <form class="form-signin" method="POST">
+
+             {% csrf_token %}
+             {{ form|crispy }}
+            <!-- <input class="form-control" type="text" id="inputEmail" required="" placeholder="Username" autofocus="" style="border: 2px solid var(--dark) ;">
+            <input class="form-control" type="password" id="inputPassword" required="" placeholder="Password" style="border: 2px solid var(--dark) ;"> -->
+
+            <button class="btn btn-primary btn-block btn-lg border rounded btn-signin" type="submit"
+            style="background: var(--dark);text-align: center;margin-top: 15px;margin-bottom: 8px;">Sign
+            in</button>
+     </form>
+    </div>
+
+
+{% else %}
+
+<div class="container ">
+    <div class="jumbotron jumbotron-fluid mt-5">
+      <h1 class="display-4 d-flex justify-content-center">You are already Logged In!!</h1>
+  </div>
+  </div>
+  
+
+  {% endif %}
+{%endblock%}
