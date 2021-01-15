@@ -1,4 +1,4 @@
-{% load static %}
+﻿{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -16,23 +16,30 @@
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md sticky-top navbar-fixed-top navigation-clean-button"
-        style="background: rgb(255,255,255);color: var(--dark);margin-top: 8px;margin-left: 0px;padding-top: 13px;padding-bottom: 13px;height: 90px;border-bottom-width: 2px;border-bottom-style: solid;">
+        style="background: rgb(255,255,255);color: var(--dark);margin-top: 8px;margin-left: 0px;padding-top: 13px;padding-bottom: 13px;height: 90px;border-bottom-width: 2px;border-bottom-style: solid; margin-bottom: 15px;">
         <div class="container">
             <div><a class="navbar-brand" href="/"><span class="text-nowrap text-center"
-                        style="font-family: 'Grand Hotel', cursive;font-size: 35px;margin-left: -8px;text-shadow: 0px 2px 2px #aaaaaa;">writerspace</span>
-                </a></div>
-            <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav nav-right">
-                    <li class="nav-item"><a class="nav-link" href="blog/bloggers">Authors</a></li>
-                </ul>
-                <p class="ml-auto navbar-text actions" style="text-shadow: 0px 0px;"><a class="login" href="registration/login.html"
-                        style="color: var(--dark);text-align: center;border-style: none;margin-right: 12px;">Log In</a>
-                    <a class="btn btn-light shadow action-button" role="button" href="signup.html"
-                        style="color: var(--dark);border-radius: 0;background: rgb(255,255,255);border-style: solid;border-color: #1f2021;padding: 3px;padding-top: 1px;padding-bottom: 1px;padding-right: 4px;padding-left: 5px;">Sign
-                        Up</a></p>
+                        style="font-family: 'Grand Hotel', cursive;font-size: 35px;margin-left: 8px;text-shadow: 0px 2px 2px #aaaaaa;">writespace</span></a>
             </div>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle
+                    navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'bloggers' %}">See the Authors</a></li>
+                    <li class="nav-item"><a class="login nav-link" href="{% url 'login' %}"
+                            style="color: var(--dark);border-style: none;margin-right: 12px;">Log In</a></li>
+                    <li class="nav-item">
+                        <button class="btn btn-light shadow border-dark p-1 rounded" 
+                              href="{% url 'signup' %}">SignUp</button>
+                    </li>
+            </div>
+            </li>
+            </ul>
+        </div>
         </div>
     </nav>
+
+
     <div class="container">
 
 
@@ -43,12 +50,16 @@
 
 
     </div>
-    <footer class="footer"
-        style="filter: blur(0px);text-align: center;border-top: 2px solid var(--dark);margin-top: 9px;padding-bottom: 35px;bottom:0;width: 100%;">
+
+
+
+    <footer class="footer-basic position-relative"
+        style="bottom: 0; filter: blur(0px);text-align: center;border-top: 2px solid var(--dark);margin-top: 9px;padding-bottom: 35px;bottom:0;width: 100%;">
         <footer>
-            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="https://github.com/akmiqdad/Writespace"><i
-                        class="icon ion-social-github"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a
-                    href="#"><i class="icon ion-social-facebook"></i></a></div>
+            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a
+                    href="https://github.com/akmiqdad/Writespace"><i class="icon ion-social-github"></i></a><a
+                    href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i
+                        class="icon ion-social-facebook"></i></a></div>
             <p class="copyright">Writerspace © 2021</p>
         </footer>
     </footer>

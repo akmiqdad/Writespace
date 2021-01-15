@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
-from .models import BlogAuthor,BlogPost,BlogComment
+from .models import BlogPost,BlogComment,BlogAuthor
 
 from django.core.paginator import Paginator,EmptyPage
 from django.contrib.auth import authenticate, login
@@ -9,12 +9,20 @@ from .forms import CreateBlog,CommentForm,CreateProfile
 from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
-def blog(request):
-    Blogs = BlogPost.objects.all()
+def BlogsHome(request):
+    blog = BlogPost.objects.all()
     count = BlogPost.objects.all().count()
 
+    p = Paginator(blog, 5)
+    page_num = request.GET.get('page', 1)
+
+    try:
+        page = p.page(page_num)
+    except EmptyPage:
+        page = p.page(1)
+
     context = {}
-    context['Blog'] = blog
+    context['Blogs'] = blog
     context['Count'] = count
     return render(request,'home.html',context)
 
@@ -34,11 +42,12 @@ def AuthorDetails(request, author_id):
     Author = User.objects.get(id=author_id)
     bio = BlogAuthor.objects.get(name = Author)
         
-    Blogs = BlogPost.objects.filter(author = Author)
+    blogs = BlogPost.objects.filter(author = Author)
     context = {}
     context['Author'] = Author
     context['Bio'] = Bio
     context['Blogs'] = blogs
+    
     return render(request, "profile.html", context)
 
 
@@ -82,14 +91,15 @@ def Signup(request):
 
 
 def CreateBlog(request):
-
     if request.method == 'POST':
-        form = CreateBlog(request.user.name,request.POST)
+        form = CreateBlog(request.user.username,request.POST)
         if form.is_valid():
             form.save()
-            return redirect('blog')
+            return redirect('/')
     else:
-        form = CreateBlog(request.user.name)
+        form = CreateBlog(request.username.name)
+    
     context = {}
     context['form'] = form
-    return render(request,'home.html', context)
+    return render(request,'createblog.html', context)
+

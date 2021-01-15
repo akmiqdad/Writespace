@@ -5,51 +5,22 @@
 {% block content %}
 <div class="container d-flex justify-content-center">
   {% if Count > 0  %}
-  <h1 class="display-4">Latest Blogs</h1>
+  <h4 class="display-4" style="font-family: Roboto;font-weight: bold;padding-top:10px;">Latest Blogs</h4>
   {% else %}
-  <h1 class="display-4">No blogs to display</h1>
+  <h4 class="display-4" style="font-family: Roboto;font-weight: bold;padding-top:10px;">No blogs to display</h4>
   {% endif %}
 </div>
 
-<div class="d-flex justify-content-center">
-  {%if user.is_authenticated %}
-  <div class="modal fade" role="dialog" tabindex="-1" id="postform" style="margin-top: 0px;">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div style="border: 2px solid var(--dark);border-radius: 5px;margin-top: 0px;">
-          <div class="modal-header" style="color: var(--dark);margin-top: 0px;padding: 0px;">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                aria-hidden="true">×</span></button>
 
-            <form action="" method="POST">
-              {% csrf_token %}
-              {{ form|crispy }}
-              <button class="btn mt-3 btn-primary" type="submit">Submit</button>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#postform" type="button"
-      style="background: rgb(0,0,0);border-style: solid;border-radius: 6px;border-color:black;font-family: Lora, serif;font-size: 17px;height: 50px;width: 165px;box-shadow: 3px 3px 4px var(--dark);">Create
-      a Post</button></div>
-  {%endif%}
-</div>
-</div>
-
-
-{%for Blog in Blogs%}
-<div class="container-fluid">
-  <div class="card text-center m-3 shadow-lg p-3 mb-5 bg-white rounded border border-primary">
-    <div class="card-header">Author: <a href="/blog/blogger/{{Blog.blog_author.id}}">{{Blogs.author}}</a></div>
+{% for Blog in Blogs %}
+<div class="container">
+  <div class="card text-left m-3 shadow-lg p-3 mb-5 bg-white rounded border-dark">
     <div class="card-body">
-      <h5 class="card-title"><ins>{{Blogs.title}}</ins></h5>
-      <p>{{ Blog.content|truncatewords:50 }}</p>
-      <a href="/blog/{{Blog.id}}" class="btn btn-primary">View Full Blog</a>
+      <h5 class="card-title"><b>{{Blog.title}}</b></h5>
+      Author: <a href="/blog/blogger/{{Blog.author.id}}">{{Blog.author}}</a>
+      Post Date: {{Blog.date}}
+      <p>{{ Blog.content|truncatewords:50}}<a href="/blog/{{Blog.id}}"><b>Read More</b></a></p>
     </div>
-    <div class="card-footer">{{Blogs.date}}</div>
   </div>
 </div>
 

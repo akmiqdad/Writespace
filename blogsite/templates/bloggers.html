@@ -3,32 +3,29 @@
 
 {% block content %}
 
-<div class="jumbotron jumbotron-fluid ">
-    <div class="d-flex justify-content-center">
-      <h1 class="display-4">Bloggers at Teckieium</h1>
-    </div>
-  </div>
-<div class="container card mt-5 shadow-lg p-3 mb-5 bg-white rounded border border-primary">
-<table class="table ">
-  <thead>
-    <tr>
-      <th scope="col">Blogger Id</th>
-      <th scope="col">Username</th>
-      <th scope="col">Checkout Their Profile</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    {% for Blogger in Bloggers%}
-    {% if not Blogger.is_superuser%}
-    <tr>
-      <th scope="row">{{Blogger.id}}</th>
-      <td>{{Blogger.username}}</td>
-      <td> <a href="/blog/blogger/{{Blogger.id}}">Click Here</a></td>
-    </tr>
-    {% endif %}
-    {% endfor%}
-  </tbody>
-</table>
+<div class="d-flex text-center">
+  <h4 class="display-4" style="font-family: Roboto;font-weight: bold;padding-top:10px;">Bloggers at Writespace</h4>
+</div>
+<div class="container card mt-5 shadow-lg p-3 mb-5 bg-white rounded border border-dark text-center w-75">
+  <table class="table ">
+    <thead>
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Checkout Their Profile</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for Blogger in Bloggers%}
+
+      <tr>
+        <td>{{Blogger.username}}</td>
+        <td> <a href="/blog/blogger/{{Blogger.id}}">Click Here</a></td>
+      </tr>
+
+      {% endfor%}
+    </tbody>
+  </table>
 </div>
 {% endblock %}
