@@ -12,7 +12,7 @@ venv/
 db.sqlite3
 
 # Static folder at project root
-/static/
+/staticfiles/
 
 # Windows
 Thumbs.db*
