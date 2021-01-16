@@ -17,9 +17,9 @@
   <div class="card text-left m-3 shadow-lg p-3 mb-5 bg-white rounded border-dark">
     <div class="card-body">
       <h5 class="card-title"><b>{{Blog.title}}</b></h5>
-      Author: <a href="/blog/blogger/{{Blog.author.id}}">{{Blog.author}}</a>
-      Post Date: {{Blog.date}}
+      
       <p>{{ Blog.content|truncatewords:50}}<a href="/blog/{{Blog.id}}"><b>Read More</b></a></p>
+      <span class="badge badge-light border-dark"  > Author: <a href="/blog/blogger/{{Blog.author.id}}">{{Blog.author}}</a>,   Post Date: {{Blog.date}}</span>
     </div>
   </div>
 </div>

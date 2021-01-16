@@ -8,9 +8,11 @@
   <div class="card text-left mt-3 shadow-lg p-3 mb-5 bg-white rounded border-dark" >
     <div class="card-body">
       <h4 class="card-title"><b>{{Blog.title}}</b></h4>
-      <div style="font-style: italic;">
-        <b>Author:</b> <a href="/blog/blogger/{{Blog.author.id}}">{{Blog.author}}</a>,
-        <b>Date:</b> {{Blog.date}}
+      <div>
+        <span class="badge badge-dark">
+        By <a href="/blog/blogger/{{Blog.author.id}}">{{Blog.author}}</a>,
+        {{Blog.date}}
+      </span>
       </div>
       <p>{{ Blog.content}}</p>
     </div>
@@ -20,9 +22,8 @@
               <ul class="list-group">
         {% for comment in Comments %}
           <li class="list-group-item justify-content-between ">
-              <div class="text-white bg-dark">
-                <span style="font-style: italic; padding-left: 10px;">By <a href="/blog/blogger/{{comment.author.id}}">{{comment.author}}</a>, </span>
-                <span style="font-style: italic;">{{comment.comment_date}}</span>
+              <div>
+                <span class="badge badge-dark"  style="font-style: italic;">By <a href="/blog/blogger/{{comment.author.id}}">{{comment.author}}</a>, {{comment.comment_date}}</span>
               </div>
             {{comment}}
           </li>
