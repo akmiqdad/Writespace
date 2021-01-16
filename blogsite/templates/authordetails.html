@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}<title>{{request.user.name}} - Writespace</title>{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center mt-5 mb-5">
+  
+    <div class="card bg-dark  " style="width: 25rem">
+      <div class="card-body text-white ">
+        <h5 class="card-title d-flex justify-content-center ">Name: {{Author}}</h5>
+        {%if Bio%}
+        <p class="card-text text-center">
+         Bio: {{Bio.bio}}
+        </p>
+        {% else %}
+        <p class="card-text text-center">
+          Bio: {{Default_bio}}
+        </p>
+        {%endif%}
+      </div>
+      <ol class="list-group list-group-flush ">
+        {% for Blog in Blogs %}
+        <li class="list-group-item">Blog: <a href="/blog/{{Blog.id}}">{{Blog.title}}</a><br>Posted On: {{Blog.date}}</li>
+        {% endfor %}
+      </ol>
+    </div>
+    </div>
+    
+{% endblock %}

@@ -1,4 +1,9 @@
 @media only screen and (max-width: 768px) {
+    #signup {
+        padding-left: 16px;
+        padding-bottom: 8px;
+    }
+
     .navbar-nav {
         background: white;
         width: 30%;
@@ -6,6 +11,10 @@
         border-style: solid;
         border-color: gray;
     }
+}
+
+span.asteriskField {
+    display: none;
 }
 
 .dropdown-toggle::after {
@@ -21,6 +30,7 @@
     background-color: #fff;
     color: #4b4c4d
 }
+
 .footer-basic .social {
     text-align: center;
     padding-bottom: 25px
@@ -117,7 +127,7 @@
 
 
 @media (min-width:768px) {
-   
+
     .navigation-clean-button {
         padding-top: 1rem;
         padding-bottom: 1rem
@@ -138,6 +148,7 @@
 .navigation-clean-button .navbar-form {
     border-top-color: #ddd
 }
+
 .navigation-clean-button.navbar .navbar-nav .nav-link,
 .navigation-clean-button.navbar .navbar-nav>li>a {
     padding-left: 18px;
@@ -195,4 +206,3 @@
     background-color: black;
     border: none
 }
-

@@ -5,11 +5,16 @@
 {% block content %}
 <div class="container d-flex justify-content-center">
   {% if Count > 0  %}
-  <h4 class="display-4" style="font-family: Roboto;font-weight: bold;padding-top:10px;">Latest Blogs</h4>
+  <h4 class="display-4" style="font-family:zillaslab,palatino,Roboto;font-weight: bold;padding-top:10px;">Latest Blogs</h4>
   {% else %}
   <h4 class="display-4" style="font-family: Roboto;font-weight: bold;padding-top:10px;">No blogs to display</h4>
   {% endif %}
 </div>
+{%if user.is_authenticated %}
+<div class="container d-flex justify-content-center">
+<a action="button" href="/blog/create" class="btn btn-dark rounded">Create a Blog</a>
+</div>
+{%endif%}
 
 
 {% for Blog in Blogs %}
@@ -28,13 +33,11 @@
 
 <div class="container-fluid d-flex justify-content-center mb-3">
   {%if Blogs.has_previous%}
-
-  <a href="?page={{ Blogs.previous_page_number }}"><button type="button" class="btn btn-primary">Previous
-      Page</button></a>
+  <a type="button" class="btn btn-outline-dark rounded" href="?page={{ Blogs.previous_page_number }}">Previous Page</a>
   {% endif %}
 
   {% if Blogs.has_next%}
-  <a href="?page={{ Blogs.next_page_number }}"><button type="button" class="btn btn-primary">Next Page</button></a>
+  <a href="?page={{ Blogs.next_page_number }}" type="button" class="btn btn-outline-dark rounded">Next Page</a>
   {% endif %}
 </div>
 
