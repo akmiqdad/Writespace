@@ -1,14 +1,18 @@
 {% extends "base.html" %}
-{% block title %}<title>{{request.user.name}} - Writespace</title>{% endblock %}
+{% block title %}<title>{{Author}} - Writespace</title>{% endblock %}
+{%load static%}
 
 {% block content %}
-<div class="container d-flex justify-content-center mt-5 mb-5">
-  
-    <div class="card bg-dark  " style="width: 25rem">
-      <div class="card-body text-white ">
+<div class="d-flex flex-column">
+  <div class="container d-flex justify-content-center mt-5 mb-5">
+    <div class="card border-dark rounded " style="width: 25rem">
+      <div class="card-header text-dark ">
+        <img class="profile-img" src="{% static 'avatar.png' %}" style="border-width: 1px;border-style: solid;">
         <h5 class="card-title d-flex justify-content-center ">Name: {{Author}}</h5>
+      </div>
+        <div class="card-body bg-dark text-white">
         {%if Bio%}
-        <p class="card-text text-center">
+        <p class="card-text text-center bg-dark">
          Bio: {{Bio.bio}}
         </p>
         {% else %}
@@ -17,12 +21,21 @@
         </p>
         {%endif%}
       </div>
-      <ol class="list-group list-group-flush ">
-        {% for Blog in Blogs %}
-        <li class="list-group-item">Blog: <a href="/blog/{{Blog.id}}">{{Blog.title}}</a><br>Posted On: {{Blog.date}}</li>
-        {% endfor %}
-      </ol>
     </div>
-    </div>
+  </div>
+    <div class="container d-flex flex-column ">
+    <h4 style="font-family: Roboto;font-weight: bold;padding-top:10px; text-align: center;">Popular Blogs</h4>
+    <br>
+    <ol class="list-group  justify-content-between ">
+      {% for Blog in Blogs %}
+      <div class="">
+      <li class="list-group-item d-flex justify-content-between">Blog Title : <a href="/blog/{{Blog.id}}">{{Blog.title}}</a>
+        <span class="badge badge-dark" >Date: {{Blog.date}}</span></li>
+      </div>
+      {% endfor %}
+    </ol>
+  </div>
+
+  </div>
     
 {% endblock %}

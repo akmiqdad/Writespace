@@ -48,13 +48,14 @@ def BlogDetails(request,blog_id):
     context = {}
     context['Blog'] = Blog
     context['Comments'] = Comments
+    print(context.items())
     if request.user.is_authenticated:
         user = User.objects.get(id = request.user.id)
         context['User'] = user
     return render(request, 'blogdetails.html', context)
 
 def AuthorDetails(request, author_id):
-    Author =BlogAuthor.objects.get(id=author_id)
+    Author =User.objects.get(id=author_id)
     try:
         bio = BlogAuthor.objects.get(id = author_id)
         default_bio = None
@@ -65,10 +66,11 @@ def AuthorDetails(request, author_id):
     blogs = BlogPost.objects.filter(author = Author)
     context = {}
     context['Author'] = Author
+    print(context.items())
     context['Bio'] = bio
     context['Default_bio'] = default_bio
     context['Blogs'] = blogs
-    
+    # print(context.items())
     return render(request, "authordetails.html", context)
 
 def CreateBio(request):

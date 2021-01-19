@@ -12,7 +12,13 @@
         border-color: gray;
     }
 }
-
+.profile-img {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    border-radius: 50%
+}
 span.asteriskField {
     display: none;
 }
@@ -51,7 +57,7 @@ span.asteriskField {
     margin-top: 15px;
     text-align: center;
     font-size: 13px;
-    color: #aaa;
+    color: black;
     margin-bottom: 0
 }
 
