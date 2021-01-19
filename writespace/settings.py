@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+import django_heroku
+
 
 from pathlib import Path
 import os
@@ -24,10 +26,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'bi8@$^l$)92m(0iu2h*4%(+n4!&^n@7b$oiii8i&h9iw^zr1-8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
 
+
+ALLOWED_HOSTS = ['writespace.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -131,3 +134,5 @@ os.path.join(BASE_DIR, 'static'),
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
+
+django_heroku.settings(locals())
