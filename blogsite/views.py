@@ -29,13 +29,14 @@ def BlogsHome(request):
     return render(request,'home.html',context)
 
 def CreateBlog(request):
+
     if request.method == 'POST':
-        form = CreateBlog(request.POST)
+        form = CreateBlog(request.user.username,request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('blog')
     else:
-        form = CreateBlog(request.user)
+        form = CreateBlog(request.user.username)
     
     context = {}
     context['form'] = form
@@ -108,7 +109,7 @@ def CreateComment(request,blog_id):
         form = CommentForm(blog_id,request.POST)
         if form.is_valid():
             form.save()
-            return redirect('blog')
+            return redirect('home')
     else:
         form = CommentForm(blog_id)
 
