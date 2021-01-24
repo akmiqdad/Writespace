@@ -37,4 +37,4 @@ class BlogAuthor(models.Model):
     bio = models.TextField(max_length=400)
 
     def __str__(self):
-        return self.name.username
+        return self.user.username

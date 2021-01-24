@@ -29,7 +29,7 @@ class CreateBlog(forms.ModelForm):
         fields = ('title' ,'author' ,'content')
 
     def __init__(self, user, *args, **kwargs):
-        super(CreateBlog, self).__init__(*args, **kwargs)
+        super(CreateBlog, self).__init__(*args, **kwargs)   
         self.fields['author'].queryset = User.objects.filter(username=user)
 
 

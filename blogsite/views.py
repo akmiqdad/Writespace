@@ -1,13 +1,11 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import BlogPost,BlogComment,BlogAuthor
-
-from django.core.paginator import Paginator,EmptyPage
-from django.contrib.auth import authenticate, login
 from .forms import CreateBlog,CommentForm,BioForm
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
+from django.core.paginator import Paginator,EmptyPage
 # Create your views here.
 
 def BlogsHome(request):
@@ -28,19 +26,6 @@ def BlogsHome(request):
     
     return render(request,'home.html',context)
 
-def CreateBlog(request):
-
-    if request.method == 'POST':
-        form = CreateBlog(request.user.username,request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('blog')
-    else:
-        form = CreateBlog(request.user.username)
-    
-    context = {}
-    context['form'] = form
-    return render(request,'createblog.html', context)
 
 def BlogDetails(request,blog_id):
     Blog = BlogPost.objects.get(id=blog_id)
@@ -76,7 +61,7 @@ def AuthorDetails(request, author_id):
 
 def CreateBio(request):
     if request.method == 'POST':
-        form = BioForm(request.user.username,request.POST,)
+        form = BioForm(request.user.username,request.POST)
         if form.is_valid():
             form.save()
             return redirect('home')
@@ -107,6 +92,7 @@ def CreateBio(request):
 def CreateComment(request,blog_id):
     if request.method == 'POST':
         form = CommentForm(blog_id,request.POST)
+        # print(form)
         if form.is_valid():
             form.save()
             return redirect('home')
@@ -121,6 +107,7 @@ def CreateComment(request,blog_id):
 
 def Bloggers(request):
     Bloggers = User.objects.all()
+    # print(Bloggers)
     context = {}
     context['Bloggers'] = Bloggers
     return render(request, "bloggers.html", context)
@@ -142,6 +129,17 @@ def Signup(request):
     context['form'] = form
     return render(request, 'registration/signup.html', context)
 
-
+def CreateBlogPost(request):
+    if request.method == 'POST':
+        form = CreateBlog(request.user.username,request.POST)
+        print(form)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+            form = CreateBlog(request.user.username)
+    context = {}
+    context['form'] = form
+    return render(request,'createblog.html', context)
 
 

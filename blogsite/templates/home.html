@@ -5,14 +5,14 @@
 {% block content %}
 <div class="container d-flex justify-content-center">
   {% if Count > 0  %}
-  <h4 class="display-4" style="font-family:zillaslab,palatino,Roboto;font-weight: bold;padding-top:10px;">Latest Blogs</h4>
+  <h4 class="display-4" style="font-family:Roboto;font-weight: bold;padding-top:10px;">Latest Blogs</h4>
   {% else %}
   <h4 class="display-4" style="font-family: Roboto;font-weight: bold;padding-top:10px;">No blogs to display</h4>
   {% endif %}
 </div>
 {%if user.is_authenticated %}
 <div class="container d-flex justify-content-center">
-<a action="button" href="/create" class="btn btn-dark rounded">Create a Blog</a>
+<a action="button" href="/blog/create/" class="btn btn-dark rounded">Create a Blog</a>
 </div>
 {%endif%}
 
